@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
-os.chdir('/Users/samsung/PycharmProjects/FM/src')
+os.chdir('/FM')
 os.getcwd()
 
 

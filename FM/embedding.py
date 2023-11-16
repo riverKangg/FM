@@ -3,7 +3,7 @@ import json
 import torch
 import torch.nn as nn
 
-os.chdir('/Users/samsung/PycharmProjects/FM/src')
+os.chdir('/FM')
 
 
 class EmbeddingDict(nn.Module):
