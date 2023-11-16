@@ -1,9 +1,5 @@
-import os
-import json
 import torch
 import torch.nn as nn
-
-os.chdir('/FM')
 
 
 class EmbeddingDict(nn.Module):
@@ -57,12 +53,26 @@ class EmbeddingDict(nn.Module):
 
 
 if __name__ == "__main__":
-    with open("../input/FeatureMap/avazu.json", 'rb') as json_file:
-        feature_map = json.load(json_file)
+    featuremap = {
+        'features': {
+            'feature1': {'vocab_size': 5},
+            'feature2': {'vocab_size': 10},
+            'feature3': {'vocab_size': 3},
+        }
+    }
 
-    data = torch.load("../input/avazu/avazu.pt")
-    X = data['X']
+    input_data = {
+        'feature1': torch.randint(0, 5, (1000,)),
+        'feature2': torch.randint(0, 10, (1000,)),
+        'feature3': torch.randint(0, 3, (1000,))
+    }
 
-    emb = EmbeddingDict(feature_map)
-    X_emb = emb(X)
-    print(X_emb.shape)
+    embedding_model = EmbeddingDict(featuremap, embedding_size=5)
+    embedded_data = embedding_model(input_data)
+
+    print("Input Data Shapes:")
+    for feat in input_data:
+        print(f"{feat}: {input_data[feat].shape}")
+
+    print("\nEmbedded Data Shape:")
+    print(embedded_data.shape)
