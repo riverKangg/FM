@@ -4,9 +4,6 @@ import torch
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
-os.chdir('/FM')
-os.getcwd()
-
 
 class makeInput(object):
     def __init__(self, dataname):
@@ -42,7 +39,7 @@ class makeInput(object):
                 0] == "C" else 'numeric'
             spec_dict["padding_idx"] = 0
             spec_dict["vocab_size"] = len(set(X[col])) if spec_dict['type'] == "categorical" else 1
-            spec_dict["oov_idx"] = spec_dict["vocab_size"] - 1
+            spec_dict["oov_idx"] = spec_dict["vocab_size"] - 1 if spec_dict['type'] == "categorical" else None
             feature_dict[col] = spec_dict
         feature_map['features'] = feature_dict
 

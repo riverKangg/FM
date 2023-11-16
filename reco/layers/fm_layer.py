@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
-from FM import *
+from reco.layers.linear_layer import LinearLayer
+from reco.utils.inner_product import InnerProduct
+from reco.layers.embedding import FeatureEmbedding
 
 
 class FMLayer(nn.Module):
@@ -29,7 +31,7 @@ if __name__ == "__main__":
         'feature3': torch.randint(0, 3, (1000,))
     }
 
-    embedding_layer = EmbeddingDict(featuremap)
+    embedding_layer = FeatureEmbedding(featuremap)
     input_data_emb = embedding_layer(input_data)
 
     fm_layer = FMLayer(featuremap)

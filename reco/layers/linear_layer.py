@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
-from FM.embedding import EmbeddingDict
+from reco.layers.embedding import FeatureEmbedding
 
 
 class LinearLayer(nn.Module):
     def __init__(self, featuremap, use_bias=True):
         super(LinearLayer, self).__init__()
         self.bias = nn.Parameter(torch.zeros(1), requires_grad=True) if use_bias else None
-        self.embedding = EmbeddingDict(featuremap, embedding_size=1)
+        self.embedding = FeatureEmbedding(featuremap, embedding_size=1)
 
     def forward(self, X):
         y_pred = self.embedding(X).sum(dim=1)

@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
 
-
-class EmbeddingDict(nn.Module):
+class FeatureEmbedding(nn.Module):
     """
     Custom PyTorch module for creating an embedding dictionary.
 
@@ -19,14 +18,14 @@ class EmbeddingDict(nn.Module):
     """
     def __init__(self, featuremap, embedding_size=5):
         """
-        Initializes the EmbeddingDict module.
+        Initializes the FeatureEmbedding module.
 
         Args:
             featuremap (dict): A dictionary containing feature information.
             embedding_size (int): The size of the embedding vectors.
 
         """
-        super(EmbeddingDict, self).__init__()
+        super(FeatureEmbedding, self).__init__()
         feature_dict = featuremap['features']
         self.embedding_layer = nn.ModuleDict(
             {feat: nn.Embedding(feature_dict[feat]['vocab_size'], embedding_size) for feat in feature_dict}
@@ -67,7 +66,7 @@ if __name__ == "__main__":
         'feature3': torch.randint(0, 3, (1000,))
     }
 
-    embedding_model = EmbeddingDict(featuremap, embedding_size=5)
+    embedding_model = FeatureEmbedding(featuremap, embedding_size=5)
     embedded_data = embedding_model(input_data)
 
     print("Input Data Shapes:")
