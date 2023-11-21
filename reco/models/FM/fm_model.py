@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
-from reco.fm_layer import FMLayer
-from reco.embedding import EmbeddingDict
+from reco.layers.fm_layer import FMLayer
+from reco.layers.embedding import FeatureEmbedding
 
 
-class FacorizationMachine(nn.Module):
+class FM(nn.Module):
     def __init__(self, featuremap):
-        super(FacorizationMachine, self).__init__()
-        self.embedding = EmbeddingDict(featuremap)
+        super(FM, self).__init__()
+        self.embedding = FeatureEmbedding(featuremap)
         self.fm = FMLayer(featuremap)
 
     def forward(self, X, y):
@@ -33,6 +33,6 @@ if __name__ == "__main__":
     }
     label = torch.randint(0, 1, (1000,))
 
-    model = FacorizationMachine(featuremap)
+    model = FM(featuremap)
     output = model(input_data, label)
     print(output['y_pred'].shape, output['y_true'].shape)
