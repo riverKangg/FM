@@ -21,6 +21,8 @@ class DNNLayer(nn.Module):
         self.dnn = nn.Sequential(*dnn_layers)
 
     def forward(self, input):
+        if type(input)==dict:
+            input = torch.stack([input[key] for key in input], dim=1)
         return self.dnn(input)
 
 
