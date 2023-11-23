@@ -28,9 +28,9 @@ The Factorization Machine (FM) model is a popular algorithm used in recommendati
 
 The FM model predicts the output \(\hat{y}(x)\) based on the provided input data. The model structure is defined by the equation:
 
-\[ \hat{y}(x) := w_0 + \sum_{i=1}^{n} w_i x_i + \sum_{i=1}^{n} \sum_{j=i+1}^{n} \langle v_i, v_j \rangle x_i x_j \]
+$$ \hat{y}(x) := w_0 + \sum_{i=1}^{n} w_i x_i + \sum_{i=1}^{n} \sum_{j=i+1}^{n} \langle v_i, v_j \rangle x_i x_j $$
 
-- \( \hat{y}(x) \): Predicted output of the FM model for input \(x\).
+- $$ \hat{y}(x) $$: Predicted output of the FM model for input \(x\).
 - \( w_0 \): Bias term.
 - \( \sum_{i=1}^{n} w_i x_i \): Linear term, capturing the contribution of each feature \(x_i\) with its weight \(w_i\).
 - \( \sum_{i=1}^{n} \sum_{j=i+1}^{n} \langle v_i, v_j \rangle x_i x_j \): Interaction term, modeling feature interactions using factorized weights \(v_i\) and \(v_j\).
