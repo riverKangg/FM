@@ -18,16 +18,19 @@ class DNNLayer(nn.Module):
             dnn_layers.append(nn.ReLU())
             dnn_layers.append(nn.Dropout(dropout_rate))
         dnn_layers.append(nn.Linear(hidden_units[-1], output_dim, bias=use_bias))
+
         self.dnn = nn.Sequential(*dnn_layers)
 
     def forward(self, input):
-        if type(input)==dict:
+        if type(input) == dict:
             input = torch.stack([input[key] for key in input], dim=1)
+        input = input.to(torch.float32)
         return self.dnn(input)
 
 
 if __name__ == "__main__":
-    input_data = torch.rand((100, 10))
-    dnn = DNNLayer(10)
+    input_dim = 10
+    input_data = torch.rand((100, input_dim))
+    dnn = DNNLayer(input_dim)
     output = dnn(input_data)
     print(input_data.size(), output.size())
