@@ -15,7 +15,7 @@ This repository contains a PyTorch implementation of a Factorization Machine (FM
 
 The Factorization Machine (FM) model is a popular algorithm used in recommendation systems. It is designed to capture interactions between features in a dataset, making it particularly effective for tasks such as collaborative filtering.
 - [Paper](https://analyticsconsultores.com.mx/wp-content/uploads/2019/03/Factorization-Machines-Steffen-Rendle-Osaka-University-2010.pdf)
-- [Papar review]()
+- [Papar review](https://recheeze.tistory.com/88)
 
 
 ## Overview
