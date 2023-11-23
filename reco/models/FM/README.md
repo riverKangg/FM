@@ -11,7 +11,7 @@
 ### Configuration
 
 **Data**
-![FMinput](../../../docs/pics/FM_input.png)
+<img src=../../../docs/pics/FM_input.png width="80%" style="display: block; margin: 0 auto;"/>
 
 **Model structure**
 
