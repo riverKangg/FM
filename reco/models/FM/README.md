@@ -11,7 +11,9 @@
 ### Configuration
 
 **Data**
-<img src=../../../docs/pics/FM_input.png width="80%" style="display: block; margin: 0 auto;"/>
+
+<img src=../../../docs/pics/FM_input.png width="60%" style="display: block; margin: 0 auto;"/>
+
 
 **Model structure**
 
